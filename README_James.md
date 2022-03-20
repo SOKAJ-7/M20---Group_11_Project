@@ -1,2 +1,2 @@
 # EDA and Machine Learning Models
-In this branch, I conducted basic exploratory data analysis and made basic machine learning models for our project, including preprocessing our data.  
+In this branch, I conducted basic exploratory data analysis and made basic machine learning models for our project, including preprocessing our data. We are currently deciding between using a RandomForestRegressor model or using a standard multiple linear regression model. Thus, I have included mockup code for both so we can decide later which model suits our needs best.
