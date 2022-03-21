@@ -26,7 +26,7 @@ We intend to subset our database of songs to a single genre to figure out how th
 ## Source Data
 Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The dataset contains the name, track_id, genre, and artist name of 232,725 songs along with the target and feature variables listed in the 'Selected Topic' section of this README file. The songs listed in this dataset were all released in 2019 or earlier. The data contains no missing values but has many duplicate values which will need to be dropped from our dataset before using it. 
 
-# Technologies thats gonna be used in the project:
+# used  Technologies :
 -Postgres.
 -Python ,jupyter Notebook.
 
