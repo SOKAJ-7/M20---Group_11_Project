@@ -32,7 +32,7 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 
 
 
-## Questions we hope to answer
+## Questions to be  answered:
 1. Our main question, what mix of sonic qualities make a song more popular in any given genre?
 2. Which metrics have the highest impact on song popularity? Which has the least effect?
 3. How does mean song popularity vary from genre to genre? Can we create a tiered-list of the most popular genres?
