@@ -1,6 +1,6 @@
 CREATE TABLE artist_data (
-    artist_id varchar   NOT NULL,
     artist_name varchar NOT NULL,
+    artist_id varchar   NOT NULL,
     followers int   NOT NULL,
     PRIMARY KEY (artist_id)
 );
