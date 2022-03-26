@@ -1,15 +1,16 @@
-# M20---Group 11 Project
+
 
 # Group 11: Spotify Song Popularity Predictor
-# Why Spotify?
 
-Music can bring people together thats what we all agreed on in our team and because all of us share a passion for music as well as the creativity of the artists that create it. With the rise of big data, our group wondered how increased insights into listener preferences may influence the music that acheives the most success. If data analytics shows that a certain song style or genre has a higher chance for popularity, isn't it likely that the mainstream will be saturated with that genre? This scenario would result in artists foregoing creativity in favour of profits and a popular music landscape that lacks variety.
-This in turn motivated us to try and find the best dataset for this project and Spotify was the one. You would ask why Spotify? Because it is a digital music streaming service. It gives you instant access to its vast online library of music and podcasts, allowing you to listen to any content of your choice at any time. It is both legal and easy to use. It has been almost 15 years since Spotify first launched in 2008. Much has changed since, and today the platform is among the most popular music streaming services, with a considerable lead over other options like Apple Music and Tidal , so why not Spotify is the one!! 
+## Creating a More Diverse Musical Landscape with Machine Learning
+Music can bring people together. That's what the members of our team agreed upon and because all of us share a passion for music along with the creativity of the artists that create it, we decided to create a machine learning algorithm that could improve today's musical landscape. With the rise of big data, our group wondered how increased insights into listener preferences may influence the music that acheives the most success. If data analytics shows that a certain song style or genre has a higher chance for popularity, isn't it likely that the mainstream will be saturated with that genre? This scenario would result in artists foregoing creativity in favour of profits and a popular music landscape that lacks variety.
+This in turn motivated us to try to find an optimal dataset for this project and found a Spotify dataset containing over 200,000 songs including metrics for songs popularity as well as musical element such as loudness, danceability, energy, key, etc. We believe that Spotify is an optimal source of data as it is one of the largest and most popular music-streaming services and so, will likely represent popular musical tastes fairly well.
 
 # Purpose of the Project:
 
-Our team beleives that data analytics could also be a solution to this problem however! If we were to be able to show what makes a song successful in less popular genres with our algorithm, smaller artists in less popular genres could be assisted in reaching wider audiences. Thereby increasing mainstream interest in the genre  whilst helping small artists find more financial success.
-For our project we chose to create a multiple linear regression (MLR) machine learning model that could predict the popularity of any given song provided with the following criteria:
+As mentioned above, our team wants to address the impact that big data could have on the diversity of mainstream music. If we were able to show what makes a song successful in less popular genres with our algorithm, smaller artists in those genres could be assisted in reaching wider audiences. Thereby increasing mainstream interest in the genre whilst helping small artists find more financial success.
+
+For our project we chose to create a Random Forest regression machine learning model that could predict the popularity of any given song provided with the following criteria. In this dataset, popularity is scored on a scale of 1-100 based on listen counts of each song relative to the listen counts of other songs on Spotify:
 
 - acousticness 
 - danceability 
@@ -24,6 +25,8 @@ For our project we chose to create a multiple linear regression (MLR) machine le
 - tempo
 - time signature
 - valence
+
+
 
 We intend to subset our database of songs to a single genre to figure out how the criteria listed above contributes to the popularity of a song in that genre specifically.
 
