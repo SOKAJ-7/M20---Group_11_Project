@@ -96,3 +96,4 @@ Features to be used in our model were selected based on exploratory data analysi
 As mentioned in our ‘Model Choice’ section, a main benefit of using a Random Forest model is that it does not require much feature engineering. So, no scaling or normalization of our data will need to be done for our model. Furthermore, binning of our data had no significant impact on the accuracy of our model. 
 
 
+
