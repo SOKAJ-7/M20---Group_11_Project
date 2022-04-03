@@ -64,3 +64,36 @@ FROM album_data as ad
 
 ## Communication Protocols
 Prior to designing our project each member shared their availability for all 7 days of the week with the rest of the group in a Whatsapp group chat. During this project, written communication will take place on the aforementioned Whatsapp chat as well as the Group chat on Slac. For vocal communication, our group will be meeting every Tuesday and Thursday for our scheduled class as well as scheduling additional meetings on the weekend as necessary. Information and documents that each member would like to share can also be posted to a group Google Docs document which has allowed for collaboration on designing the project and machine learning model. Additionally, each group member has been added to a GitHub where code was peer reviewed.
+
+## Our Machine Learning Model
+
+### Model Choice
+For our machine learning model, we chose to use a Random Forest Regressor. Listed below are some of the reasons we chose this model:
+- **Feature importance**: This is important to our project as we aim to determine which aspects of a song in each genre should be intensified or dulled to maximize popularity. If we chose a model that could not rank feature importance, this task would be near-impossible.
+- **Good at handling both categorical and numerical data**: Our dataset contains multiple columns of both data types.
+- **Robust to outliers**: Three of our features-of-interest have over 10,000 outliers: duration (11,487); loudness (11,525); and instrumentalness (39,670).
+- **No need for scaling/normalization**: Because Random Forests are decision-tree based algorithms, there is no need to scale or normalize our data. This makes our preprocessing tasks simpler.
+- **Simplicity**: The coding for Random Forests is relatively straight-forward, especially when combined with the lack of a need for feature engineering. They also do not need much parameter tuning to create a decent model.
+
+Random Forests do not come without any drawbacks, however:
+- **No feature importance coefficients**: While we can rank feature importance, the algorithm does not provide coefficients for each feature as a multiple linear regression model would. So, we may know which features are most important but will not be able to see exactly how important when each feature is individually examined.
+- **Outputs can be hard to interpret**: Random Forests can be described as ‘black boxes’, where the sheer number of trees created can make user-interpretation difficult.
+- **Computationally costly**: Random forests create many trees and as a result can take up lots of memory and be slow to evaluate data.
+
+Overall, the ability of Random Forests to create a simple, accurate, and robust model combined with its ability to rank feature importance makes it an optimal choice for our project.
+
+### Preliminary Data Preprocessing
+The first preprocessing task to accomplish is to subset our dataframe for the genre we wish to examine. After subsetting our dataframe for our chosen genre, the columns ‘genre’, ‘artist_name’, ‘track_name’, and ‘track_id’ will be dropped as they are identification variables and have no impact on our machine learning model.  Next, categorical variables like ‘mode’ and ‘key’ will be encoded using pandas’ “get_dummies” function or sklearn’s “onehotencoder”.  
+
+The resulting dataframe will have the ‘popularity’ column dropped and the ‘. values’ function applied to create the features array (X). The target (y) array will be the ‘popularity’ column that was dropped to create the features array. Lastly, sklearn’s ‘.train_test_split()’ function will be used to create a test and training set for both our feature and target arrays. After all this is accomplished, our data will be ready to be used in our Random Forest model.
+
+### Preliminary Feature Selection and Engineering
+Features to be used in our model were selected based on exploratory data analysis (EDA) on each feature in combination with practical considerations. Based on these guidelines, the following columns were selected to be dropped from our model:
+- **Time Signature**: ~95% of all songs in the dataset have a time signature of ‘4/4’. The overwhelming number of songs in this time signature means that this feature will not likely add value to our model.
+- **Liveness**: Less than 10% of the songs in our dataset have an above 40% chance of being a live recording. Additionally, the purpose of our project is to help artist write songs that will be recorded in-studio. Whether a song is performed live has no effect on the songwriting process and so, ‘liveness’ is not important to our model.
+- **Acousticness**: This feature should only be dropped depending on the genre being examined in our model. Some genres will naturally be more acoustic like folk or country while genres like electronic music will be overwhelmingly not acoustic.
+- **Speechiness**: Only 12% of the songs in our dataset have ‘speechiness’ values above 0.2. There is an overall lack of diversity in the ‘speechiness’ values across all genres of interest. Additionally, this measure is poorly correlated with song popularity with a correlation coefficient of 0.1. Other than the ‘liveness’ feature, there is no other more poorly correlated feature with popularity.
+ 
+As mentioned in our ‘Model Choice’ section, a main benefit of using a Random Forest model is that it does not require much feature engineering. So, no scaling or normalization of our data will need to be done for our model. Furthermore, binning of our data had no significant impact on the accuracy of our model. 
+
+
