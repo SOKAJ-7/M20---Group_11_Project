@@ -31,6 +31,6 @@ CREATE TABLE track_features (
     tempo float   NOT NULL,
     time_signature integer   NOT NULL,
     valence float   NOT NULL,
-    PRIMARY KEY (natural_key, genre),
+    PRIMARY KEY (track_natural_key, genre),
     FOREIGN KEY (album_id) REFERENCES album_data (album_id)
 );
