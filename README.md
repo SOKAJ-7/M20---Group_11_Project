@@ -76,7 +76,6 @@ For our machine learning model, we chose to use a Random Forest Regressor. Liste
 - **Simplicity**: The coding for Random Forests is relatively straight-forward, especially when combined with the lack of a need for feature engineering. They also do not need much parameter tuning to create a decent model.
 
 Random Forests do not come without any drawbacks, however:
-- **No feature importance coefficients**: While we can rank feature importance, the algorithm does not provide coefficients for each feature as a multiple linear regression model would. So, we may know which features are most important but will not be able to see exactly how important when each feature is individually examined.
 - **Outputs can be hard to interpret**: Random Forests can be described as ‘black boxes’, where the sheer number of trees created can make user-interpretation difficult.
 - **Computationally costly**: Random forests create many trees and as a result can take up lots of memory and be slow to evaluate data.
 
