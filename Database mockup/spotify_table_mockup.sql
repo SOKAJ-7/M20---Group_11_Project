@@ -11,9 +11,9 @@ CREATE TABLE album_data (
 );
 
 CREATE TABLE track_features (
-    natural_key varchar   NOT NULL,
-    track_name varchar   NOT NULL,
+    track_natural_key varchar   NOT NULL,
     artist_name varchar   NOT NULL,
+    track_name varchar   NOT NULL,
     album_id varchar   NOT NULL,
     acousticness float   NOT NULL,
     danceability float   NOT NULL,
