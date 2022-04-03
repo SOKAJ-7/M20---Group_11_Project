@@ -1,5 +1,6 @@
 CREATE TABLE genre_data (
     genre varchar   NOT NULL,
+    PRIMARY KEY (genre)
 );
 
 CREATE TABLE album_data (
@@ -30,8 +31,6 @@ CREATE TABLE track_features (
     tempo float   NOT NULL,
     time_signature integer   NOT NULL,
     valence float   NOT NULL,
-    PRIMARY KEY (track_natural_key, genre) 
+    PRIMARY KEY (natural_key, genre),
     FOREIGN KEY (album_id) REFERENCES album_data (album_id)
 );
-
-
