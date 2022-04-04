@@ -1,4 +1,4 @@
-![Concert_hall_rock_concert-1366x668 (1) (1)](https://user-images.githubusercontent.com/93050931/160220252-cf9e1863-fb74-4833-b9ad-bdfc3e844efb.jpg)
+![this is picture](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/github.png)
 
 
 
