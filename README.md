@@ -44,7 +44,7 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 - Jupyter Notebook.
 
 
-## EDA 
+## Exploratory data analysis (EDA) 
 After importing the dependencies and checking the shape of the data we tried to show few check points in Spotify as shown below:
 
 1.As the picture shows we can see for example that the artist_name have the value closed to (25000) and for the track_name we have a value close to (175000).
