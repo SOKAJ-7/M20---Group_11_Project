@@ -103,17 +103,35 @@ This following histogram shows the feature (speachness):Detects the presence of 
  
 
 ## Database
-* Edited ERD and schemas for dataset, consists of tables for artist_data, album_data and track_features
-* Entity relationship diagram:
-  ![ERD.png](/images/ERD.png)
-* An [example](/images/mock_database_multiple_join.png) table joined on artist_id, track_id and album_id can be exported as CSV to be used downstream for the machine learning model:
+Entity relationship diagram and schemas for dataset, consists of tables for genre_data, album_data and track_features. Database currently stores 1000 tracks. Records were written into the database using a connection string (SQLAlchemy) in the [data retrieval notebook](/Notebooks/data_retrieval_using_Spotipy.ipynb):
 ```
-SELECT * 
-FROM album_data as ad
-	INNER JOIN track_features as tf
-	ON ad.album_id = tf.album_id
-	INNER JOIN artist_data as rd
-	ON tf.artist_id = rd.artist_id
+# Imports
+from sqlalchemy import create_engine
+import psycopg2 
+from config import db_password
+
+# Create connection to database (endpoint to be decided)
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/spotify_db"
+
+# instantiate engine
+engine = create_engine(db_string)
+
+track_features.to_sql(name='track_features', con=engine, if_exists='replace', index=False)
+genre_data.to_sql(name='genre_data', con=engine, if_exists='replace', index=False)
+album_data.to_sql(name='album_data', con=engine, if_exists='replace', index=False)
+```
+
+
+Entity relationship diagram:
+  ![ERD.png](/images/ERD.png)
+
+
+An [example](/images/spotify_db_inner_join.png) table joined on album_id can be exported as CSV to be used downstream for the machine learning model:
+```
+SELECT *
+FROM track_features
+INNER JOIN album_data
+ON album_data.album_id = track_features.album_id
 ```
 
 ## Questions to be answered

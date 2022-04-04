@@ -1,24 +1,23 @@
-CREATE TABLE artist_data (
-    artist_name varchar NOT NULL,
-    artist_id varchar   NOT NULL,
-    followers int   NOT NULL,
-    PRIMARY KEY (artist_id)
+CREATE TABLE genre_data (
+    genre varchar   NOT NULL,
+    PRIMARY KEY (genre)
 );
 
 CREATE TABLE album_data (
-    album_name varchar   NOT NULL,
     album_id varchar   NOT NULL,
-    release_date date   NOT NULL,
+    album_name varchar   NOT NULL,
+    release_season varchar   NOT NULL,
     PRIMARY KEY (album_id)
-)
+);
 
 CREATE TABLE track_features (
+    track_natural_key varchar   NOT NULL,
+    artist_name varchar   NOT NULL,
     track_name varchar   NOT NULL,
-    track_id varchar   NOT NULL,
-    artist_id varchar   NOT NULL,
     album_id varchar   NOT NULL,
     acousticness float   NOT NULL,
     danceability float   NOT NULL,
+    duration_mins time   NOT NULL,
     duration_ms int   NOT NULL,
     energy float   NOT NULL,
     genre varchar   NOT NULL,
@@ -32,8 +31,6 @@ CREATE TABLE track_features (
     tempo float   NOT NULL,
     time_signature integer   NOT NULL,
     valence float   NOT NULL,
+    PRIMARY KEY (track_natural_key, genre),
     FOREIGN KEY (album_id) REFERENCES album_data (album_id)
-    FOREIGN KEY (artist_id) REFERENCES artist_data (artist_id)
 );
-
-
