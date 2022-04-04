@@ -44,10 +44,30 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 - Jupyter Notebook.
 
 ## Database
-* Edited ERD and schemas for dataset, consists of tables for artist_data, album_data and track_features
-* Entity relationship diagram:
+Entity relationship diagram and schemas for dataset, consists of tables for genre_data, album_data and track_features. Database currently stores 1000 tracks. Records were written into the database using a connection string (SQLAlchemy) in the [data retrieval notebook](/Notebooks/data_retrieval_using_Spotipy.ipynb):
+```
+# Imports
+from sqlalchemy import create_engine
+import psycopg2 
+from config import db_password
+
+# Create connection to database (endpoint to be decided)
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/spotify_db"
+
+# instantiate engine
+engine = create_engine(db_string)
+
+track_features.to_sql(name='track_features', con=engine, if_exists='replace', index=False)
+genre_data.to_sql(name='genre_data', con=engine, if_exists='replace', index=False)
+album_data.to_sql(name='album_data', con=engine, if_exists='replace', index=False)
+```
+
+
+Entity relationship diagram:
   ![ERD.png](/images/ERD.png)
-* An [example](/images/spotify_db_inner_join.png) table joined on album_id can be exported as CSV to be used downstream for the machine learning model:
+
+
+An [example](/images/spotify_db_inner_join.png) table joined on album_id can be exported as CSV to be used downstream for the machine learning model:
 ```
 SELECT *
 FROM track_features
