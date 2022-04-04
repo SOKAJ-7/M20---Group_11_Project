@@ -43,6 +43,54 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 - Python
 - Jupyter Notebook.
 
+
+## EDA 
+after importing the dependencies and checking the shape of the data we tried to show few check points in Spotify as showen below:
+
+1.as the picture shows we visualized each column we have by using uniuqe value for each one we can see for example that the artist_name have the value closed to (25000) and for the track_name we have a value closed to (175000).
+[pic]
+
+2. next we tried to remove all the unconventional or non_musical genres to summarize general musical trends.
+[pic]
+
+3.in here the data show us how many columns and the type for each one ,for the whole data we have  float64(9)  int64(2) and object(7) for each 
+[pic]
+
+4.in this table show us mean ,STD , min ,max ,25%,50%,75%  for each feature
+[pic]
+
+5.histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
+[pic]
+
+6.histogram shows the feature (instrumentalness):Predicts whether a track contains no vocals. Sounds such as "ooh" and "aah" are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The higher the value, the greater the likelihood that the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but the confidence is higher as the value approaches 1.0.
+[pic]
+
+7. histogram shows the feature (danceability):Describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. The higher the value, the easier it is to dance to the song.
+[pic]
+
+8.histogram show the feature (acousticness):A measure of whether the track is acoustic (i.e. not having electrical amplification). The higher the value, the more acoustic the song.
+[pic]
+
+9. histogram shows the feature (loudness):The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks.
+ [pic]
+ 
+ 10. histogram shows the feature (liveness):Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides a strong likelihood that the track is live.
+ [pic]
+ 
+ 11.histogram shows the feature (tempo):The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece, and derives directly from the average beat duration.
+ [pic]
+ 
+ 12.histogram show the feature (valence):Describes the musical positiveness conveyed by a track. Tracks with a higher valence sound more positive (i.e. happy, cheerful, euphoric), while tracks with low valence convey a more negative sound (i.e. sad, depressed, angry)
+[pic]
+
+13.histogram show the feature(energy):Represents a perceptual measure of intensity and activity - the higher the value, the more energetic the song. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has a high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy. 
+ [pic]
+ 
+ 14.histogram show the feature(popularity):is a score (0-100, 100 being the most popular) calculated by a Spotify algorithm,the closer to 100 the more popular the songs is.
+ [pic]
+ 
+ 
+
 ## Database
 * Edited ERD and schemas for dataset, consists of tables for artist_data, album_data and track_features
 * Entity relationship diagram:
