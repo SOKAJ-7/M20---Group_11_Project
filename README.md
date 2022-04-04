@@ -59,11 +59,12 @@ After importing the dependencies and checking the shape of the data we tried to 
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph3.png)
 
-4.This histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
+4.All of the histograms below have the number of songs on the y-axis.
+This following histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph4.png)
 
-5.The following histogram shows the feature (instrumentalness):Predicts whether a track contains no vocals. Sounds such as "ooh" and "aah" are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The higher the value, the greater the likelihood that the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but the confidence is higher as the value approaches 1.0.
+5.The histogram shows the feature (instrumentalness):Predicts whether a track contains no vocals. Sounds such as "ooh" and "aah" are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The higher the value, the greater the likelihood that the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but the confidence is higher as the value approaches 1.0.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph5.png)
 
