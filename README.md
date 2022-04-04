@@ -47,14 +47,12 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 * Edited ERD and schemas for dataset, consists of tables for artist_data, album_data and track_features
 * Entity relationship diagram:
   ![ERD.png](/images/ERD.png)
-* An [example](/images/mock_database_multiple_join.png) table joined on artist_id, track_id and album_id can be exported as CSV to be used downstream for the machine learning model:
+* An [example](/images/spotify_db_inner_join.png) table joined on album_id can be exported as CSV to be used downstream for the machine learning model:
 ```
-SELECT * 
-FROM album_data as ad
-	INNER JOIN track_features as tf
-	ON ad.album_id = tf.album_id
-	INNER JOIN artist_data as rd
-	ON tf.artist_id = rd.artist_id
+SELECT *
+FROM track_features
+INNER JOIN album_data
+ON album_data.album_id = track_features.album_id
 ```
 
 ## Questions to be answered
