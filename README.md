@@ -52,39 +52,51 @@ After importing the dependencies and checking the shape of the data we tried to 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph1.png)
 
 2. Next we tried to remove all the unconventional or non-musical genres to summarize general musical trends. The most popular genre in our dataset is Indie.
+
 ![](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph2.png)
 
 3. This table show us the mean, the standard deviation, the minimum value, the maximum value and the quartiles for each feature.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph3.png)
 
 4.This histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph4.png)
 
 5.The following histogram shows the feature (instrumentalness):Predicts whether a track contains no vocals. Sounds such as "ooh" and "aah" are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The higher the value, the greater the likelihood that the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but the confidence is higher as the value approaches 1.0.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph5.png)
 
 6. This histogram shows the feature (danceability): Describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. The higher the value, the easier it is to dance to the song.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph6.png)
 
 7.This histogram show the feature (acousticness):A measure of whether the track is acoustic (i.e. not having electrical amplification). The higher the value, the more acoustic the song.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph7.png)
 
 8. This histogram shows the feature (loudness):The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks.
- ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph8.png)
+
+![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph8.png)
  
 9. This histogram shows the feature (liveness):Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides a strong likelihood that the track is live.
- ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph9.png)
+ 
+![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph9.png)
  
 10.This histogram shows the feature (tempo):The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece, and derives directly from the average beat duration.
- ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph10.png)
+
+![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph10.png)
  
 11. This histogram show the feature (valence):Describes the musical positiveness conveyed by a track. Tracks with a higher valence sound more positive (i.e. happy, cheerful, euphoric), while tracks with low valence convey a more negative sound (i.e. sad, depressed, angry)
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph11.png)
 
 12. This histogram show the feature(energy):Represents a perceptual measure of intensity and activity - the higher the value, the more energetic the song. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has a high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy. 
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph12.png)
  
 13.This histogram show the feature(popularity):is a score (0-100, 100 being the most popular) calculated by a Spotify algorithm,the closer to 100 the more popular the songs is.
+
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/screenshots/graph13.png)
  
  
