@@ -103,39 +103,60 @@ This following histogram shows the feature (speachness):Detects the presence of 
  
 
 ## Database
-Entity relationship diagram and schemas for dataset, consists of tables for genre_data, album_data and track_features. Database currently stores 1000 tracks. Records were written into the database using a connection string (SQLAlchemy) in the [data retrieval notebook](/Notebooks/data_retrieval_using_Spotipy.ipynb):
+Records were written into the database using a connection string (SQLAlchemy) in the [data processing notebook](/Notebooks/data_processing_spotify_sqlite.ipynb) and according to the below entity relationship diagram:
 ```
 # Imports
 from sqlalchemy import create_engine
 import psycopg2 
 from config import db_password
 
-# Create connection to database (endpoint to be decided)
+# Create connection to database
 db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/spotify_db"
 
 # instantiate engine
 engine = create_engine(db_string)
 
-track_features.to_sql(name='track_features', con=engine, if_exists='replace', index=False)
-genre_data.to_sql(name='genre_data', con=engine, if_exists='replace', index=False)
-album_data.to_sql(name='album_data', con=engine, if_exists='replace', index=False)
+Albums.to_sql(name='albums', con=engine, if_exists='replace', index=False)
+Artists.to_sql(name='artists', con=engine, if_exists='replace', index=False)
+Audio_features.to_sql(name='audio_features', con=engine, if_exists='replace', index=False)
+R_artist_genre.to_sql(name='r_artist_genre', con=engine, if_exists='replace', index=False)
+R_albums_tracks.to_sql(name='r_albums_tracks', con=engine, if_exists='replace', index=False)
+R_albums_artists.to_sql(name='r_albums_artists', con=engine, if_exists='replace', index=False)
+Tracks.to_sql(name='tracks', con=engine, if_exists='replace', index=False)
 ```
 
-
-Entity relationship diagram:
+Entity relationship diagram of the Spotify database consists of seven tables:
   ![ERD.png](/images/ERD.png)
 
-
-An [example](/images/spotify_db_inner_join.png) table joined on album_id can be exported as CSV to be used downstream for the machine learning model:
+The dataset to be used downstream for the dashboard and machine learning model was generated through a series of [joins](/images/spotify_db_inner_join.png):
 ```
-SELECT *
-FROM track_features
-INNER JOIN album_data
-ON album_data.album_id = track_features.album_id
+SELECT tracks.track_name, 
+    artists.artist_name, 
+    albums.album_name, 
+    rag.genre, 
+    tracks.popularity, 
+    af.*
+FROM tracks
+INNER JOIN audio_features as af
+ON af.track_id = tracks.track_id
+INNER JOIN r_albums_tracks as rat
+ON rat.track_id = af.track_id
+INNER JOIN albums
+ON rat.album_id = albums.album_id
+INNER JOIN r_albums_artists as raa
+ON raa.album_id = rat.album_id
+INNER JOIN artists 
+ON raa.artist_id = artists.artist_id
+INNER JOIN r_artist_genre as rag
+ON rag.artist_id = raa.artist_id;
 ```
+The resulting table, spotify_all_tables, was exported as CSV and then hosted on an [AWS S3 bucket](https://dyl-lee-bucket.s3.amazonaws.com/spotify_all_tables.csv). spotify_all_tables contains 5156587 unique track_id's and 5460 unique genres. Many of these genres are variations of alternatives of generic genres (e.g. Red Hot Chili Peppers are classified as alternative rock, funk rock as well as rock). The decision to keep these alternative genres in the dataset was meant to keep options open for transformations, including reducing the alternative genres to the generic ones if necessary.
+![unique_track_ids.png](/images/spotify_db_distinct_tracks.png)
+![unique_genres.png](/images/spotify_db_genre_groupby.png)
+![rhcp_example.png](/images/spotify_db_distinct_genre_RHCP.png)
 
 ## Questions to be answered
-1. Our main question, what mix of sonic qualities make a song more popular in any given genre?
+1. Our main question, what mix of audio features make a song more popular in any given genre?
 2. Which metrics have the highest impact on song popularity? Which has the least effect?
 3. How does mean song popularity vary from genre to genre? Can we create a tiered-list of the most popular genres?
 4. How much variance is there between the "ideal" song in each genre? Which genres are the most or least sonically similar?

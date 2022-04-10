@@ -66,12 +66,20 @@ SELECT tracks.track_name,
     af.*
 FROM tracks
 INNER JOIN audio_features as af
-on af.track_id = t.track_id
+ON af.track_id = tracks.track_id
 INNER JOIN r_albums_tracks as rat
-on rat.track_id = af.track_id
-INNER JOIN r_albums_artist as raa
-on raa.album_id = rat.album_id
-INNER JOIN artists as a
-on raa.artist_id = a.artist_id
+ON rat.track_id = af.track_id
+INNER JOIN albums
+ON rat.album_id = albums.album_id
+INNER JOIN r_albums_artists as raa
+ON raa.album_id = rat.album_id
+INNER JOIN artists 
+ON raa.artist_id = artists.artist_id
 INNER JOIN r_artist_genre as rag
-on rag.artist_id = raa.artist_id;
+ON rag.artist_id = raa.artist_id;
+
+-- Query to find total unique genres
+SELECT COUNT(DISTINCT genre) FROM spotify_all_tables;
+
+-- Query to find total unique tracks
+SELECT COUNT(DISTINCT track_id) FROM spotify_all_tables;
