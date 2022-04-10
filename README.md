@@ -151,6 +151,7 @@ INNER JOIN r_artist_genre as rag
 ON rag.artist_id = raa.artist_id;
 ```
 The resulting table, spotify_all_tables, was exported as CSV and then hosted on an [AWS S3 bucket](https://dyl-lee-bucket.s3.amazonaws.com/spotify_all_tables.csv). spotify_all_tables contains 5156587 unique track_id's and 5460 unique genres. Many of these genres are variations of alternatives of generic genres (e.g. Red Hot Chili Peppers are classified as alternative rock, funk rock as well as rock). The decision to keep these alternative genres in the dataset was meant to keep options open for transformations, including reducing the alternative genres to the generic ones if necessary.
+
 ![unique_track_ids.png](/images/spotify_db_distinct_tracks.png)
 ![unique_genres.png](/images/spotify_db_genre_groupby.png)
 ![rhcp_example.png](/images/spotify_db_distinct_genre_RHCP.png)
