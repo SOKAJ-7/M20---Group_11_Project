@@ -41,11 +41,11 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 ## Used Technologies
 - PostgreSQL
 - Python
-* sklearn
-* pandas
-* numpy
-* imblearn
-* matplotlib
+** sklearn
+** pandas
+** numpy
+** imblearn
+** matplotlib
 - Jupyter Notebook.
 
 
