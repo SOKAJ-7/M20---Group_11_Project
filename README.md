@@ -225,7 +225,7 @@ Based on these accuracy scores, it is clear that our model performs best without
 
 ![Undersample_scores](https://user-images.githubusercontent.com/93050931/162639178-3df9797f-b656-4c76-901a-1fa517ecfbcf.png)
 
-(*Our Models performance metrics when analyzed on a per-class basis*)
+(*An example of our model's performance metrics when analyzed on a per-class basis*)
 
 
 
