@@ -197,7 +197,36 @@ Features to be used in our model were selected based on exploratory data analysi
 As mentioned in our ‘Model Choice’ section, a main benefit of using a Random Forest model is that it does not require much feature engineering. So, no scaling or normalization of our data will need to be done for our model. Furthermore, binning of our data had no significant impact on the accuracy of our model. 
 
 ## Changes to the Model Since Deliverable 2
-As mentioned in the sections above, our original thought process for our machine learning model was to use a RandomForestRegressor() model. However,
+As mentioned in the sections above, our original thought process for our machine learning model was to use a RandomForestRegressor() model. However, upon carrying out the regressor model we realized that our target variable may be too hard to predict accurately using regression. The R-squared value of the regression model was extremely low, ~0.05. With a mean square error of ~52.00 and a root mean square error of ~7.00. These measurements indicate a model that is highly innaccurate and would not be of much use to any prospective users. Thus, we decided to use a RandomForestClassifier() model to acheive our desired results. We decided to stick with using a Random Forest model as it would retain many of the benefits of the regressor model but allow us to have more control over the target feature (popularity) to increase the accuracy of our model.
+
+With this change in model selection, the 'popularity' column of our data frame needed to be binned to ensure relatively even distribution amongst the different classes of the target feature. This proved to be a very difficult task as songs in the 50-70 range of popularity were vastly over-represented in most genres of our dataset. This led to highly biased predictions and uninformative confusion matrices (see 'Performance Metrics and Accuracy Score' below). This problem limited the number of bins we could group our popularity column into as if we used too many bins, there would inevitably be a few which were drastically over-represented. We settled at creating 3 bins: 'Unpopular (0-35)', 'Average (35-60)', and 'Popular (60-100)'. These bins provided the best compromise between specificity of classification and model accuracy.
+
+To account for any additional class imbalance we further employed various sampling strategies which we hoped would improve our model's performance metrics (See 'Training' below).
+
+## Training
+Our data was trained with various datasets based on resampling techniques. In our original train/test split, we used 50% of the data for each split, this number was chosen as it resulted in the most balanced classes in our training set. To improve on class balancing, we employed oversampling, undersampling, and SMOTEENN combination sampling. Our model was then trained using data resulting from each of these sampling techniques along with one model that was trained without any resampling.
+
+## Performance Metrics and Accuracy Score
+The performance metrics for our model are difficult to definitively quantify as our model will perform slightly differently based on the genre that our training set is based on. To come up with estimates of our model metrics. We will run each model on 3 different genres and take the mean metric scores to represent our model.
+
+### No resampling
+**Mean Model Accuracy**: (0.46 + 0.53 + 0.44)/3 = 0.48
+
+### Undersampling
+**Mean Model Accuracy**: (0.42 + 0.44 + 0.37)/3 = 0.41
+
+### Oversampling
+**Mean Model Accuracy**: (0.44 + 0.42 + 0.37)/3 = 0.41
+
+### SMOTEENN
+**Mean Model Accuracy**: (0.35 + 0.22 + 0.27)/3 = 0.28
+
+Based on these accuracy scores, it is clear that our model performs best without any resampling techniques. However, our mean model score does not tell the entire story. When our model is evaluated on a per-class basis by a multiclass confusion matrix, it performs much better. Below is a multi-class matrix for our under-sampling model for the 'latin' genre. The mean model accuracy was 0.37 but our multilabel confusion matrix scores our model's accuracy around 0.58.
+
+![Undersample_scores](https://user-images.githubusercontent.com/93050931/162639178-3df9797f-b656-4c76-901a-1fa517ecfbcf.png)
+
+(*Our Models performance metrics when analyzed on a per-class basis*)
+
 
 
 
