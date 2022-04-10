@@ -7,7 +7,7 @@
 
 # Group 11: Spotify Song Popularity Predictor
 
-Presentation Slides: https://docs.google.com/presentation/d/1ss1A2awXBqLZalN5tS-lgd4YEhbEr5G-roDdLKwtnSI/edit?usp=sharing
+[Presentation Slides](https://docs.google.com/presentation/d/1ss1A2awXBqLZalN5tS-lgd4YEhbEr5G-roDdLKwtnSI/edit?usp=sharing)
 
 ## Creating a More Diverse Musical Landscape with Machine Learning
 Music can bring people together. Our team shares a collective passion for music and to honor the creative dignity of artists, we created a machine learning algorithm that could diversify today's musical landscape. With the rise of big data, our group wondered how increased insights into listener preferences may influence the commercial success for certain genres. A scenario where leveraging data for profit as the main metric for success, instead of creativity for example, could ultimately result in a more homogenous music landscape.
@@ -126,7 +126,7 @@ Tracks.to_sql(name='tracks', con=engine, if_exists='replace', index=False)
 ```
 
 Entity relationship diagram of the Spotify database consists of seven tables:
-  ![ERD.png](/images/ERD.png)
+![ERD.png](/images/ERD.png)
 
 The dataset to be used downstream for the dashboard and machine learning model was generated through a series of [joins](/images/spotify_db_inner_join.png):
 ```
