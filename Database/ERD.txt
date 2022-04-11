@@ -7,34 +7,33 @@ release_season varchar
 
 artists
 --
-artist_name varchar FK >- r_albums_tracks.track_id
+artist_name varchar
 artist_id varchar PK
-followers varchar
 
-r_artist_genre
+genres
 --
 genre varchar
-artist_id varchar PK
+artist_id varchar PK FK -< r_albums_artists.artist_id
 
 r_albums_tracks
 --
-album_id varchar FK >- albums.album_id
+album_id varchar FK >- albums.album_id 
 track_id varchar PK
 
 r_albums_artists
 --
-album_id varchar FK >- r_albums_tracks.album_id
-artist_id varchar PK FK >- r_artist_genre.artist_id
+album_id varchar FK -< r_albums_tracks.album_id
+artist_id varchar PK FK >- artists.artist_id
 
 tracks
 --
-track_id varchar FK >- audio_features.track_id
+track_id varchar PK FK - audio_features.track_id
 track_name varchar
 popularity int
 
 audio_features
 --
-track_id varchar PK FK >- r_albums_tracks.track_id
+track_id varchar PK FK - r_albums_tracks.track_id
 acousticness float
 danceability float
 duration_mins time
