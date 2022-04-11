@@ -9,14 +9,12 @@ CREATE TABLE albums (
 CREATE TABLE artists (
     artist_name varchar   NOT NULL,
     artist_id varchar   NOT NULL,
-    followers varchar   NOT NULL,
     PRIMARY KEY (artist_id)
 );
 
-CREATE TABLE r_artist_genre (
+CREATE TABLE genres (
     genre varchar   NOT NULL,
-    artist_id varchar   NOT NULL,
-    PRIMARY KEY (artist_id)
+    PRIMARY KEY (genre)
 );
 
 CREATE TABLE r_albums_tracks (
@@ -36,8 +34,9 @@ CREATE TABLE audio_features (
     acousticness float   NOT NULL,
     danceability float   NOT NULL,
     duration_mins time   NOT NULL,
-    duration int   NOT NULL,
+    duration_ms int   NOT NULL,
     energy float   NOT NULL,
+    genre varchar   NOT NULL,
     instrumentalness float   NOT NULL,
     key int   NOT NULL,
     liveness float   NOT NULL,
@@ -54,16 +53,26 @@ CREATE TABLE tracks (
     track_id varchar   NOT NULL,
     track_name varchar   NOT NULL,
     popularity int   NOT NULL,
-    PRIMARY KEY (artist_id)
+    PRIMARY KEY (track_id)
 );
 
--- Query to generate spotify_all_tables table
+-- Query to generate spotify_merged table
 SELECT tracks.track_name, 
     artists.artist_name, 
-    albums.album_name, 
-    rag.genre, 
+    albums.album_name,
+    af.genre,
+	af.track_id,
+	artists.artist_id,
+	albums.album_id, 
     tracks.popularity, 
-    af.*
+	af.danceability,
+	af.duration_mins,
+	af.energy,
+	af.key,
+	af.mode,
+	af.speechiness,
+	af.tempo,
+	af.valence
 FROM tracks
 INNER JOIN audio_features as af
 ON af.track_id = tracks.track_id
@@ -71,15 +80,17 @@ INNER JOIN r_albums_tracks as rat
 ON rat.track_id = af.track_id
 INNER JOIN albums
 ON rat.album_id = albums.album_id
-INNER JOIN r_albums_artists as raa
-ON raa.album_id = rat.album_id
+-- INNER JOIN r_albums_artists as raa           -- PROBLEMS START HERE: artist_id has to be there already?
+-- ON raa.album_id = rat.album_id               -- issue what if an album has multiple first artists
 INNER JOIN artists 
 ON raa.artist_id = artists.artist_id
-INNER JOIN r_artist_genre as rag
-ON rag.artist_id = raa.artist_id;
+-- WHERE raa.artist_id = '1T575AhHueYinKSDflEsGK';
 
 -- Query to find total unique genres
-SELECT COUNT(DISTINCT genre) FROM spotify_all_tables;
+SELECT COUNT(DISTINCT genre) FROM spotify_merged;
 
 -- Query to find total unique tracks
-SELECT COUNT(DISTINCT track_id) FROM spotify_all_tables;
+SELECT COUNT(DISTINCT track_id) FROM spotify_merged;
+
+-- Drop tables
+drop table albums, artists, audio_features, genres, r_albums_artists, r_albums_tracks, tracks cascade;
