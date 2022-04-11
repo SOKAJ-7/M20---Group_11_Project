@@ -26,6 +26,8 @@ CREATE TABLE track_features (
     loudness float   NOT NULL,
     mode int   NOT NULL,
     popularity int   NOT NULL,
+    release_date date NOT NULL,
+    release_season varchar NOT NULL,
     speechiness float   NOT NULL,
     tempo float   NOT NULL,
     time_signature integer   NOT NULL,

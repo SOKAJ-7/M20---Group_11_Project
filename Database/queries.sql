@@ -16,7 +16,8 @@ ORDER BY count(*) DESC;
 SELECT tf.track_name,
 	tf.artist_name,
 	ad.album_name,
-	ad.release_date,
+	tf.release_date,
+	tf.release_season,
 	tf.album_id,
 	tf.track_id,
 	tf.danceability,
@@ -28,7 +29,7 @@ SELECT tf.track_name,
 	tf.speechiness,
 	tf.tempo,
 	tf.valence
-INTO spotify_merged
+-- INTO spotify_merged
 FROM track_features as tf
 INNER JOIN album_data as ad
 ON tf.album_id = ad.album_id
