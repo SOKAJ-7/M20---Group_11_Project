@@ -1,49 +1,34 @@
-albums
+album_data
 --
 album_id varchar PK
 album_name varchar
-release_date date
-release_season varchar
 
-artists
---
-artist_name varchar
-artist_id varchar PK
 
-genres
+genre_data
 --
-genre varchar
-artist_id varchar PK FK -< r_albums_artists.artist_id
+genre
 
-r_albums_tracks
---
-album_id varchar FK >- albums.album_id 
-track_id varchar PK
-
-r_albums_artists
---
-album_id varchar FK -< r_albums_tracks.album_id
-artist_id varchar PK FK >- artists.artist_id
-
-tracks
---
-track_id varchar PK FK - audio_features.track_id
-track_name varchar
-popularity int
 
 audio_features
 --
-track_id varchar PK FK - r_albums_tracks.track_id
+track_name varchar 
+artist_name varchar
+album_id varchar
+track_id varchar PK 
 acousticness float
 danceability float
 duration_mins time
-duration int
+duration_ms int
 energy float
+genre varchar
 instrumentalness float
 key int
 liveness float
 loudness float
 mode int
+popularity int
+release_date date
+release_season varchar 
 speechiness float
 time_signature int
 valence float
