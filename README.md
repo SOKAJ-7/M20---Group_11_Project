@@ -52,15 +52,15 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
 ## Exploratory data analysis (EDA) 
 After importing the dependencies and checking the shape of the data we tried to show few check points in Spotify as shown below:
 
-1.As the picture shows we can see for example that the artist_name have the value closed to (25000) and for the track_name we have a value close to (175000).
+1.As the picture shows we can see for example that the artist_name have the value close to 10,000 and for the track_name we have a value greater than 30,000.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_1.png)
 
-2. Next we removed all the unconventional or non-musical genres to summarize general musical trends. The most popular genre in our dataset is Indie.
+2. Next we removed all the unconventional or non-musical genres to summarize general musical trends. The most popular genre in our dataset is Singer-Songwriter.
 
 ![](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_2.png)
 
-3. This table show us the mean, the standard deviation, the minimum value, the maximum value and the quartiles for each feature.
+3. This table show us the mean, the standard deviation, the minimum value, the maximum value and the quartiles for popularity, which is our most important feature.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_3.png)
 
