@@ -108,54 +108,51 @@ This following histogram shows the feature (speachness):Detects the presence of 
  
 
 ## Database
-Records were written into the database using a connection string (SQLAlchemy) in the [data processing notebook](/Notebooks/data_processing_spotify_sqlite.ipynb) and according to the below entity relationship diagram:
+Records were written into the database using a connection string (SQLAlchemy) in the [data processing notebook](/Notebooks/dwg_v1.5_no_bin.ipynb) and according to the below entity relationship diagram:
 ```
 # Imports
 from sqlalchemy import create_engine
 import psycopg2 
 from config import db_password
 
-# Create connection to database
-db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/spotify_db"
+# Create connection to database 
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/spotify"
 
 # instantiate engine
 engine = create_engine(db_string)
 
-Albums.to_sql(name='albums', con=engine, if_exists='replace', index=False)
-Artists.to_sql(name='artists', con=engine, if_exists='replace', index=False)
-Audio_features.to_sql(name='audio_features', con=engine, if_exists='replace', index=False)
-R_artist_genre.to_sql(name='r_artist_genre', con=engine, if_exists='replace', index=False)
-R_albums_tracks.to_sql(name='r_albums_tracks', con=engine, if_exists='replace', index=False)
-R_albums_artists.to_sql(name='r_albums_artists', con=engine, if_exists='replace', index=False)
-Tracks.to_sql(name='tracks', con=engine, if_exists='replace', index=False)
+Genre_data.to_sql(name='genre_data', con=engine, if_exists='replace', index=False)
+Album_data.to_sql(name='album_data', con=engine, if_exists='replace', index=False)
+Track_features.to_sql(name='track_features', con=engine, if_exists='replace', index=False)
+
 ```
 
-Entity relationship diagram of the Spotify database consists of seven tables:
+Entity relationship diagram of the Spotify database consists of the following tables:
 ![ERD.png](/images/ERD.png)
 
-The dataset to be used downstream for the dashboard and machine learning model was generated through a series of [joins](/images/spotify_db_inner_join.png):
+The dataset to be used downstream for the dashboard and machine learning model was generated through a join:
 ```
-SELECT tracks.track_name, 
-    artists.artist_name, 
-    albums.album_name, 
-    rag.genre, 
-    tracks.popularity, 
-    af.*
-FROM tracks
-INNER JOIN audio_features as af
-ON af.track_id = tracks.track_id
-INNER JOIN r_albums_tracks as rat
-ON rat.track_id = af.track_id
-INNER JOIN albums
-ON rat.album_id = albums.album_id
-INNER JOIN r_albums_artists as raa
-ON raa.album_id = rat.album_id
-INNER JOIN artists 
-ON raa.artist_id = artists.artist_id
-INNER JOIN r_artist_genre as rag
-ON rag.artist_id = raa.artist_id;
+SELECT tf.track_name,
+	tf.artist_name,
+	ad.album_name,
+	tf.release_date,
+	tf.release_season,
+	tf.album_id,
+	tf.track_id,
+	tf.danceability,
+	tf.duration_mins,
+	tf.energy,
+	tf.genre,
+	tf.key,
+	tf.mode,
+	tf.speechiness,
+	tf.tempo,
+	tf.valence
+FROM track_features as tf
+INNER JOIN album_data as ad
+ON tf.album_id = ad.album_id
 ```
-The resulting table, spotify_all_tables, was exported as CSV and then hosted on an [AWS S3 bucket](https://dyl-lee-bucket.s3.amazonaws.com/spotify_all_tables.csv). spotify_all_tables contains 5156587 unique track_id's and 5460 unique genres. Many of these genres are variations of alternatives of generic genres (e.g. Red Hot Chili Peppers are classified as alternative rock, funk rock as well as rock). The decision to keep these alternative genres in the dataset was meant to keep options open for transformations, including reducing the alternative genres to the generic ones if necessary.
+The resulting table, spotify_merged, can then be exported as CSV if needed. spotify_all_tables contains 5156587 unique track_id's and 5460 unique genres. Many of these genres are variations of alternatives of generic genres (e.g. Red Hot Chili Peppers are classified as alternative rock, funk rock as well as rock). The decision to keep these alternative genres in the dataset was meant to keep options open for transformations, including reducing the alternative genres to the generic ones if necessary.
 
 ![unique_track_ids.png](/images/spotify_db_distinct_tracks.png)
 ![unique_genres.png](/images/spotify_db_genre_groupby.png)
