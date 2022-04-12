@@ -39,14 +39,22 @@ For this dataset, popularity is a score (0-100, 100 being the most popular) calc
 Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The dataset contains the name, track_id, genre, and artist name of 232,725 songs along with the target and feature variables listed in the 'Selected Topic' section of this README file. The songs listed in this dataset were all released in 2019 or earlier. The data contains no missing values but has many duplicate values which will need to be dropped from our dataset before using it. 
 
 ## Used Technologies
-- PostgreSQL
-- Python
-     - sklearn
-     - imblearn
-     - pandas
-     - numpy
-     - matplotlib
-- Jupyter Notebook.
+- **Database**
+     - PostgreSQL
+- **Machine Learning and EDA**
+     - Python
+          - sklearn
+          - imblearn
+          - pandas
+          - numpy
+          - matplotlib
+          - Plotly
+     - Jupyter Notebook.
+- **Dashboard
+     - Plotly Dash
+     - Heroku
+- **Presentation
+     - Google Slides
 
 
 ## Exploratory data analysis (EDA) 
