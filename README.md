@@ -50,10 +50,10 @@ Our source data is a dataset from Kaggle called 'SpotifyFeatures.csv'. The datas
           - matplotlib
           - Plotly
      - Jupyter Notebook.
-- **Dashboard
+- **Dashboard**
      - Plotly Dash
      - Heroku
-- **Presentation
+- **Presentation**
      - Google Slides
 
 
