@@ -73,7 +73,7 @@ After importing the dependencies and checking the shape of the data we tried to 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_3.png)
 
 4.All of the histograms below have the number of songs on the y-axis.
-This following histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
+This following histogram shows the feature (speechiness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_4.png)
 
