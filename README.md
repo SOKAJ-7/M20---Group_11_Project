@@ -160,11 +160,11 @@ FROM track_features as tf
 INNER JOIN album_data as ad
 ON tf.album_id = ad.album_id
 ```
-The resulting table, spotify_merged, can then be exported as CSV if needed. spotify_all_tables contains 5156587 unique track_id's and 5460 unique genres. Many of these genres are variations of alternatives of generic genres (e.g. Red Hot Chili Peppers are classified as alternative rock, funk rock as well as rock). The decision to keep these alternative genres in the dataset was meant to keep options open for transformations, including reducing the alternative genres to the generic ones if necessary.
+The resulting table, spotify_merged, can then be exported as CSV if needed. spotify_merged contains 33169 unique track_id's and 17 unique genres, where each have at least 1800 tracks per genre. 
 
 ![unique_track_ids.png](/images/spotify_db_distinct_tracks.png)
 ![unique_genres.png](/images/spotify_db_genre_groupby.png)
-![rhcp_example.png](/images/spotify_db_distinct_genre_RHCP.png)
+![rhcp_example.png](/images/spotify_db_distinct_genre_Chance.png)
 
 ## Questions to be answered
 1. Our main question, what mix of audio features make a song more popular in any given genre?
