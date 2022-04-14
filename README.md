@@ -227,14 +227,15 @@ The performance metrics for our model are difficult to definitively quantify as 
 **Mean Model Accuracy**: (0.42 + 0.44 + 0.37)/3 = 0.41
 
 ### Oversampling
-**Mean Model Accuracy**: (0.44 + 0.42 + 0.37)/3 = 0.41
+**Mean Model Accuracy**: (0.49 + 0.42 + 0.38)/3 = 0.43
 
 ### SMOTEENN
 **Mean Model Accuracy**: (0.35 + 0.22 + 0.27)/3 = 0.28
 
-Based on these accuracy scores, it is clear that our model performs best without any resampling techniques. However, our mean model score does not tell the entire story. When our model is evaluated on a per-class basis by a multiclass confusion matrix, it performs much better. Below is a multi-class matrix for our under-sampling model for the 'latin' genre. The mean model accuracy was 0.37 but our multilabel confusion matrix scores our model's accuracy around 0.58.
+Based on these accuracy scores, it is clear that our model performs best without any resampling techniques. However, this is likely due due high class imbalance in our target variable, introducing bias to our model and giving great accuracy scores at the cost of accurate precision and recall scores. So, for our model, it is best we use the best performing resampling technique, oversampling. Below is an example of our oversampling model when used on the 'EDM' genre.
 
-![Undersample_scores](https://user-images.githubusercontent.com/93050931/162639178-3df9797f-b656-4c76-901a-1fa517ecfbcf.png)
+![edm_accuracy](https://user-images.githubusercontent.com/93050931/163297582-0b33f958-0e5b-441f-aa1e-0987235d69cb.png)
+
 
 (*An example of our model's performance metrics when analyzed on a per-class basis*)
 
