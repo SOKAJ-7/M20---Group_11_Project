@@ -73,7 +73,7 @@ After importing the dependencies and checking the shape of the data we tried to 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_3.png)
 
 4.All of the histograms below have the number of songs on the y-axis.
-This following histogram shows the feature (speachness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
+This following histogram shows the feature (speechiness):Detects the presence of spoken words in a track. The more exclusively speech-like the recording , the closer the attribute value is to 1.0.
 
 ![pic](https://github.com/SOKAJ-7/M20---Group_11_Project/blob/main/images/eda_4.png)
 
@@ -202,6 +202,8 @@ Features to be used in our model were selected based on exploratory data analysi
 - **Liveness**: Less than 10% of the songs in our dataset have an above 40% chance of being a live recording. Additionally, the purpose of our project is to help artist write songs that will be recorded in-studio. Whether a song is performed live has no effect on the songwriting process and so, ‘liveness’ is not important to our model.
 - **Acousticness**: This feature should only be dropped depending on the genre being examined in our model. Some genres will naturally be more acoustic like folk or country while genres like electronic music will be overwhelmingly not acoustic.
 - **Speechiness**: Only 12% of the songs in our dataset have ‘speechiness’ values above 0.2. There is an overall lack of diversity in the ‘speechiness’ values across all genres of interest. Additionally, this measure is poorly correlated with song popularity with a correlation coefficient of 0.1. Other than the ‘liveness’ feature, there is no other more poorly correlated feature with popularity.
+-  **Mode**: This feature consistenly showed low feature importance across all genres of our machine learning model and was therefore dropped from our training  and testing data to increase the accuracy of our model.
+-  **Key**: This feature consistenly showed low feature importance across all genres of our machine learning model and was therefore dropped from our training  and testing data to increase the accuracy of our model. 
  
 As mentioned in our ‘Model Choice’ section, a main benefit of using a Random Forest model is that it does not require much feature engineering. So, no scaling or normalization of our data will need to be done for our model. Furthermore, binning of our data had no significant impact on the accuracy of our model. 
 
@@ -225,14 +227,15 @@ The performance metrics for our model are difficult to definitively quantify as 
 **Mean Model Accuracy**: (0.42 + 0.44 + 0.37)/3 = 0.41
 
 ### Oversampling
-**Mean Model Accuracy**: (0.44 + 0.42 + 0.37)/3 = 0.41
+**Mean Model Accuracy**: (0.49 + 0.42 + 0.38)/3 = 0.43
 
 ### SMOTEENN
 **Mean Model Accuracy**: (0.35 + 0.22 + 0.27)/3 = 0.28
 
-Based on these accuracy scores, it is clear that our model performs best without any resampling techniques. However, our mean model score does not tell the entire story. When our model is evaluated on a per-class basis by a multiclass confusion matrix, it performs much better. Below is a multi-class matrix for our under-sampling model for the 'latin' genre. The mean model accuracy was 0.37 but our multilabel confusion matrix scores our model's accuracy around 0.58.
+Based on these accuracy scores, it is clear that our model performs best without any resampling techniques. However, this is likely due due high class imbalance in our target variable, introducing bias to our model and giving great accuracy scores at the cost of accurate precision and recall scores. So, for our model, it is best we use the best performing resampling technique, oversampling. Below is an example of our oversampling model when used on the 'EDM' genre.
 
-![Undersample_scores](https://user-images.githubusercontent.com/93050931/162639178-3df9797f-b656-4c76-901a-1fa517ecfbcf.png)
+![edm_accuracy](https://user-images.githubusercontent.com/93050931/163297582-0b33f958-0e5b-441f-aa1e-0987235d69cb.png)
+
 
 (*An example of our model's performance metrics when analyzed on a per-class basis*)
 
