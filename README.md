@@ -170,8 +170,7 @@ The resulting table, spotify_merged, can then be exported as CSV if needed. spot
 1. Our main question, what mix of audio features make a song more popular in any given genre?
 2. Which metrics have the highest impact on song popularity? Which has the least effect?
 3. How does mean song popularity vary from genre to genre? Can we create a tiered-list of the most popular genres?
-4. How much variance is there between the "ideal" song in each genre? Which genres are the most or least sonically similar?
-5. Is it possible to assign a genre to a song accurately using the metrics used as feature variables for our algorithm
+4. Is it possible to assign a genre to a song accurately using the metrics used as feature variables for our algorithm
 
 
 
